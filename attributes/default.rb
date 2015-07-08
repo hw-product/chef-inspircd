@@ -56,7 +56,7 @@ default[:inspircd][:content][:config] = Mash.new(
     :sendq => 262144,
     :recvq => 8192,
     :localmax => 100,
-    :globalmax => 3
+    :globalmax => 100
   },
   :class => [
     Mash.new(
