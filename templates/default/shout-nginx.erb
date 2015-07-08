@@ -1,0 +1,29 @@
+server {
+  listen 9000;
+
+  location / {
+
+    sub_filter </body>
+      '<script language="javascript">
+        function getUrlVar(key){ var result = new RegExp(key + "=([^&]*)", "i").exec(window.location.search); return result && unescape(result[1]) || ""; }
+        jQuery("document").ready(function(){
+          setTimeout(function(){
+            if(getUrlVar("nick")){ jQuery("input.nick").val(getUrlVar("nick")); }
+            if(getUrlVar("username")){ jQuery("input.username").val(getUrlVar("username")); }
+            if(getUrlVar("realname")){ jQuery("input[name=\\"realname\\"]").val(getUrlVar("realname")); }
+            setTimeout(function(){
+              jQuery("button.btn").submit();
+            }, 500);
+          }, 500);
+        });
+      </script></body>';
+    sub_filter_once on;
+
+    proxy_pass http://127.0.0.1:8999;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection 'upgrade';
+    proxy_set_header Host $host;
+    proxy_cache_bypass $http_upgrade;
+  }
+}

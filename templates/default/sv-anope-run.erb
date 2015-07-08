@@ -1,0 +1,4 @@
+#!/bin/sh
+exec 2>&1
+
+exec chpst -u <%= @options[:user] %>:<%= @options[:group] %> /usr/local/anope/bin/services --confdir=/usr/local/anope/conf --dbdir=/usr/local/anope/data --nofork
