@@ -152,6 +152,7 @@ default[:inspircd][:content][:config] = Mash.new(
     Mash.new(:name => 'ojoin'),
     Mash.new(:name => 'operlevels'),
     Mash.new(:name => 'muteban'),
+    Mash.new(:name => 'permchannels'),
     Mash.new(:name => 'regex_pcre'),
     Mash.new(:name => 'restrictchans'),
     Mash.new(:name => 'rline'),
@@ -162,6 +163,13 @@ default[:inspircd][:content][:config] = Mash.new(
     Mash.new(:name => 'xline_db'),
     Mash.new(:name => 'spanningtree')
   ],
+  :permchanneldb => {
+    :filename => 'permchannels.conf',
+    :listmodes => true
+  },
+  :permchannels => {
+    :channel => '#support'
+  },
   :performance => {
     :nouserdns => false,
     :maxwho => 128,
