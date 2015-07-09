@@ -16,6 +16,16 @@ file File.join(node[:inspircd][:directory], node[:inspircd][:file_names][:rules]
   mode 0644
 end
 
+opers = search(:inspircd, "id:oper_*").map do |item|
+  item = Mash.new(Chef::EncryptedDataBagItem.load(:inspircd, item.id).to_hash)
+  item.delete(:id)
+  item
+end
+
+unless(opers.empty?)
+  node.set[:inspircd][:content][:config][:oper] = opers
+end
+
 file File.join(node[:inspircd][:directory], node[:inspircd][:file_names][:config]) do
   content lazy{
     node[:inspircd][:content][:config].map do |key, t_value|
