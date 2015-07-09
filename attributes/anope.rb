@@ -125,7 +125,7 @@ default[:inspircd][:anope][:config] = Mash.new(
       :disallow_hostmask_access => false,
       :disallow_channel_access => false,
       :always_lower_ts => true,
-      :opersonly => false
+      :opersonly => true
     ),
     Mash.new(
       :name => 'cs_akick',
