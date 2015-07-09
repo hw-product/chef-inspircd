@@ -113,8 +113,8 @@ default[:inspircd][:content][:config] = Mash.new(
     )
   ],
   :files => {
-    :motd => '/etc/inspircd/inspircd.motd',
-    :rules => '/etc/inspircd/inspircd.rules'
+    :motd => '/etc/inspircd/motd',
+    :rules => '/etc/inspircd/rules'
   },
   :channels => {
     :users => 20,
