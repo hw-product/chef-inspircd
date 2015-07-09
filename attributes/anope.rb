@@ -82,8 +82,8 @@ default[:inspircd][:anope][:config] = Mash.new(
     Mash.new(:name => 'os_reload'),
     Mash.new(
       :name => 'os_session',
-      :defaultsessionlimit => 3,
-      :maxsessionlimit => 50,
+      :defaultsessionlimit => 100,
+      :maxsessionlimit => 100,
       :exceptionexpiry => '1d',
       :sessionlimitexceeded => 'Session limit for your IP %IP% has been exceeded.',
       :session_ipv4_cidr => 32,
@@ -124,7 +124,8 @@ default[:inspircd][:anope][:config] = Mash.new(
       :signkickformat => '%m (%n)',
       :disallow_hostmask_access => false,
       :disallow_channel_access => false,
-      :always_lower_ts => true
+      :always_lower_ts => true,
+      :opersonly => true
     ),
     Mash.new(
       :name => 'cs_akick',
@@ -287,7 +288,9 @@ default[:inspircd][:anope][:config] = Mash.new(
     Mash.new(
       :name => 'ns_maxemail',
       :maxemails => 1
-    )
+    ),
+    Mash.new(:name => 'help'),
+    Mash.new(:name => 'm_regex_pcre')
   ],
   :command_group => [
     Mash.new(
