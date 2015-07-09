@@ -168,7 +168,8 @@ default[:inspircd][:content][:config] = Mash.new(
     :listmodes => true
   },
   :permchannels => {
-    :channel => '#support'
+    :channel => '#support',
+    :modes => 'P'
   },
   :performance => {
     :nouserdns => false,
