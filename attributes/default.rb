@@ -56,7 +56,8 @@ default[:inspircd][:content][:config] = Mash.new(
     :sendq => 262144,
     :recvq => 8192,
     :localmax => 100,
-    :globalmax => 100
+    :globalmax => 100,
+    :modes => '+ix'
   },
   :class => [
     Mash.new(
@@ -145,6 +146,7 @@ default[:inspircd][:content][:config] = Mash.new(
     Mash.new(:name => 'clones'),
     Mash.new(:name => 'commonchans'),
     Mash.new(:name => 'conn_join'),
+    Mash.new(:name => 'conn_umodes'),
     Mash.new(:name => 'hidechans'),
     Mash.new(:name => 'noctcp'),
     Mash.new(:name => 'ojoin'),
@@ -199,6 +201,10 @@ default[:inspircd][:content][:config] = Mash.new(
   :timesync => {
     :enable => false,
     :master => false
+  },
+  :chanhistory => {
+    :maxlines => 50,
+    :notice => true
   },
   :badnick => [
     Mash.new(
