@@ -1,5 +1,6 @@
 default[:inspircd][:packages] = ['inspircd']
 default[:inspircd][:directory] = '/etc/inspircd'
+default[:inspircd][:data_directory] = '/usr/local/inspircd/data'
 default[:inspircd][:file_names][:config] = 'inspircd.conf'
 default[:inspircd][:file_names][:motd] = 'motd'
 default[:inspircd][:file_names][:rules] = 'rules'
@@ -164,7 +165,7 @@ default[:inspircd][:content][:config] = Mash.new(
     Mash.new(:name => 'spanningtree')
   ],
   :permchanneldb => {
-    :filename => 'permchannels.conf',
+    :filename => '/usr/local/inspircd/data/conf/permchannels.conf',
     :listmodes => true
   },
   :permchannels => {
