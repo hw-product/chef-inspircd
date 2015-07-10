@@ -100,7 +100,7 @@ file 'anope services config' do
   }
   mode 0644
   if(node[:inspircd][:complete])
-    notifies :restart, 'runit_service[anope]'
+    notifies :reload, 'runit_service[anope]'
   end
 end
 

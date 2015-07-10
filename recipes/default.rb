@@ -48,7 +48,7 @@ file File.join(node[:inspircd][:directory], node[:inspircd][:file_names][:config
   }
   mode 0644
   if(node[:inspircd][:complete])
-    notifies :restart, 'runit_service[inspircd]'
+    notifies :reload, 'runit_service[inspircd]'
   end
 end
 
@@ -60,7 +60,7 @@ file node[:inspircd][:default][:path] do
   }
   mode 0644
   if(node[:inspircd][:complete])
-    notifies :restart, 'runit_service[inspircd]'
+    notifies :reload, 'runit_service[inspircd]'
   end
 end
 
