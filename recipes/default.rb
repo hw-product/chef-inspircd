@@ -5,6 +5,15 @@ node[:inspircd][:packages].each do |ircd_pkg|
 end
 
 directory node[:inspircd][:directory]
+directory node[:inspircd][:data_directory] do
+  owner node[:inspircd][:user]
+end
+
+['logs', 'conf'].each do |leaf|
+  directory File.join(node[:inspircd][:data_directory], leaf) do
+    owner node[:inspircd][:user]
+  end
+end
 
 file File.join(node[:inspircd][:directory], node[:inspircd][:file_names][:motd]) do
   content lazy{ node[:inspircd][:content][:motd] }
@@ -68,7 +77,11 @@ runit_service 'inspircd' do
   default_logger true
   options(
     :user => node[:inspircd][:user],
-    :group => node[:inspircd][:user]
+    :group => node[:inspircd][:user],
+    :log_file => ::File.join(
+      node[:inspircd][:data_directory],
+      'logs/ircd.log'
+    )
   )
   action [:enable, :start]
 end
