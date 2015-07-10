@@ -289,8 +289,7 @@ default[:inspircd][:anope][:config] = Mash.new(
       :name => 'ns_maxemail',
       :maxemails => 1
     ),
-    Mash.new(:name => 'help'),
-    Mash.new(:name => 'm_regex_pcre')
+    Mash.new(:name => 'help')
   ],
   :command_group => [
     Mash.new(
